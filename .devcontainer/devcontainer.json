@@ -3,9 +3,14 @@
     "build":{
          "dockerfile": "Dockerfile",
          "args": {
-             "USER_UID" : "1000"
+             "USER_UID": "1000",
+             "USERNAME": "ubuntu"
          }
     },
+    "mounts": [
+      "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.git-credentials,target=/home/vscode/.git-credentials,type=bind,consistency=cached"
+    ],
     "remoteUser": "ubuntu",
     "runArgs": [
         "--net", "host",
