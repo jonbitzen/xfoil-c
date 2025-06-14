@@ -98,7 +98,7 @@ C
 C
 C---- set OSFILE to match the absolute OS database filename
       CHARACTER*128 OSFILE
-      DATA OSFILE / '/home/codes/orrs/osmapDP.dat' /
+      DATA OSFILE / '/usr/share/xfoil/orrs/osmapDP.dat' /
 ccc      DATA OSFILE / '/home/codes/orrs/osmap.dat' /
 c
 c      DATA OSFILE
