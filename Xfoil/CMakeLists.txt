@@ -9,4 +9,5 @@ project(
 enable_language(Fortran)
 
 add_subdirectory(orrs)
+add_subdirectory(plotlib)
 
