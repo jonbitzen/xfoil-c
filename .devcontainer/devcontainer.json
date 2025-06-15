@@ -7,10 +7,6 @@
              "USERNAME": "ubuntu"
          }
     },
-    "mounts": [
-      "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
-      "source=${localEnv:HOME}/.git-credentials,target=/home/vscode/.git-credentials,type=bind,consistency=cached"
-    ],
     "remoteUser": "ubuntu",
     "runArgs": [
         "--net", "host",
@@ -22,26 +18,28 @@
         "--ipc", "host",
         "--gpus=all",
         "-v", "/tmp/.X11-unix:/tmp/.X11-unix",
-        "-v", "/run/user/HOST_UID:/run/user/HOST_UID",
+        "-v", "/run/user/${localEnv:UID}:/run/user/${localEnv:UID}",
         "-v", "/usr/share/icons:/usr/share/icons",
         "-e", "DISPLAY=${env:DISPLAY}",
         "-e", "QT_X11_NO_MITSHM=1",
-        "-e", "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/HOST_UID/bus",
+        "-e", "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${localEnv:UID}/bus",
         "-e", "/var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket",
-        "-e", "XDG_RUNTIME_DIR=/run/user/HOST_UID",
+        "-e", "XDG_RUNTIME_DIR=/run/user/${localEnv:UID}",
         "-e", "NVIDIA_DRIVER_CAPABILITIES=display"
     ],
     "customizations": {
         "terminal.integrated.defaultProfile.linux": "bash",
-        "extensions": [
-            "fortran-lang.linter-gfortran",
-            "ms-vscode.cpptools",
-            "ms-vscode.cpptools-extension-pack",
-            "ms-vscode.cmake-tools", 
-            "donjayamanne.githistory", 
-            "ms-python.python",
-            "ms-python.vscode-pylance", 
-            "ms-azuretools.vscode-docker"
-        ]
+        "vscode": {
+            "extensions": [
+                "fortran-lang.linter-gfortran",
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools", 
+                "donjayamanne.githistory", 
+                "ms-python.python",
+                "ms-python.vscode-pylance", 
+                "ms-azuretools.vscode-docker"
+            ]
+        }
     }
 }
